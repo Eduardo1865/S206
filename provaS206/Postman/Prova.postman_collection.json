@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "84bc1ccc-42f7-4ec2-be76-3a79c376ba4b",
+		"name": "Prova",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45105621",
+		"_collection_link": "https://eduardoaugustofonsecarezende.postman.co/workspace/Eduardo-Augusto-Fonseca-Rezende~255547bc-672d-4064-884e-fc7ec4ee2122/collection/45105621-84bc1ccc-42f7-4ec2-be76-3a79c376ba4b?action=share&source=collection_link&creator=45105621"
+	},
+	"item": [
+		{
+			"name": "Buscando um post que existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status é 200 - Sucesso\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Resposta contém 'id', 'title' e 'userId'\", function() {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.property(\"id\");\r",
+							"    pm.expect(response).to.have.property(\"title\");\r",
+							"    pm.expect(response).to.have.property(\"userId\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/1",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscando um post que não existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status é 404 - Sucesso\", function() {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Resposta deve estar vazia\", function() {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response).to.be.empty;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/200",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"200"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fazendo um novo post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status é 201 - Sucesso\", function() {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Resposta contém 'id', 'title' e 'userId'\", function() {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.property(\"id\");\r",
+							"    pm.expect(response).to.have.property(\"title\");\r",
+							"    pm.expect(response).to.have.property(\"userId\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"O id do novo post é 101\", function() {\r",
+							"    pm.expect(pm.response.json().id).to.eql(101);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"NOVO POST\",\r\n  \"body\": \"novo post novo post\",\r\n  \"userId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

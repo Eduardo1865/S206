@@ -1,0 +1,138 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-06-12T23:29:45.887Z",
+    "end": "2025-06-12T23:29:52.539Z",
+    "duration": 6652,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "021e3da5-fa46-4b8e-b2b2-1bf299ada99f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\ProvaS206.cy.js",
+      "file": "cypress\\e2e\\ProvaS206.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6ea2f4e2-f090-4869-8d66-5f9a2a8831e7",
+          "title": "Testes no site saucedemo.com",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Fazer uma compra com o standard_user",
+              "fullTitle": "Testes no site saucedemo.com Fazer uma compra com o standard_user",
+              "timedOut": null,
+              "duration": 3219,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.saucedemo.com');\ncy.get('[data-test=\"username\"]').type('standard_user');\ncy.get('[data-test=\"password\"]').type('secret_sauce');\ncy.get('[data-test=\"login-button\"]').click();\ncy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click();\ncy.get('[data-test=\"shopping-cart-link\"]').click();\ncy.get('[data-test=\"checkout\"]').click();\nlet info = criarPessoa();\ncy.get('[data-test=\"firstName\"]').type(info[0]);\ncy.get('[data-test=\"lastName\"]').type(info[1]);\ncy.get('[data-test=\"postalCode\"]').type(info[2]);\ncy.get('[data-test=\"continue\"]').click();\ncy.get('[data-test=\"finish\"]').click();\ncy.get('[data-test=\"complete-header\"]').should(\"contain.text\", \"Thank you for your order!\");",
+              "err": {},
+              "uuid": "bf4fd669-3e26-4c4b-aaa3-6f62bfd22b51",
+              "parentUUID": "6ea2f4e2-f090-4869-8d66-5f9a2a8831e7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Usuario banido não deve conseguir fazer login",
+              "fullTitle": "Testes no site saucedemo.com Usuario banido não deve conseguir fazer login",
+              "timedOut": null,
+              "duration": 884,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.saucedemo.com');\ncy.get('[data-test=\"username\"]').type('locked_out_user');\ncy.get('[data-test=\"password\"]').type('secret_sauce');\ncy.get('[data-test=\"login-button\"]').click();\ncy.get('[data-test=\"error\"]').should(\"contain.text\", \"Epic sadface: Sorry, this user has been locked out.\");",
+              "err": {},
+              "uuid": "c58ef092-00f5-40e8-951c-965194d8f7e1",
+              "parentUUID": "6ea2f4e2-f090-4869-8d66-5f9a2a8831e7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Erro onde o usuario não consegue fazer ordenação que não seja por ordem alfabetica",
+              "fullTitle": "Testes no site saucedemo.com Erro onde o usuario não consegue fazer ordenação que não seja por ordem alfabetica",
+              "timedOut": null,
+              "duration": 1112,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.saucedemo.com');\ncy.get('[data-test=\"username\"]').type('error_user');\ncy.get('[data-test=\"password\"]').type('secret_sauce');\ncy.get('[data-test=\"login-button\"]').click();\ncy.get('[data-test=\"product-sort-container\"]').select(\"Name (Z to A)\");\ncy.get('[data-test=\"product-sort-container\"]').find(':selected').should(\"have.text\", \"Name (A to Z)\");\ncy.get('[data-test=\"product-sort-container\"]').select(\"Price (low to high)\");\ncy.get('[data-test=\"product-sort-container\"]').find(':selected').should(\"have.text\", \"Name (A to Z)\");\ncy.get('[data-test=\"product-sort-container\"]').select(\"Price (high to low)\");\ncy.get('[data-test=\"product-sort-container\"]').find(':selected').should(\"have.text\", \"Name (A to Z)\");",
+              "err": {},
+              "uuid": "3c4a254c-db38-4924-9241-f93913ec6c74",
+              "parentUUID": "6ea2f4e2-f090-4869-8d66-5f9a2a8831e7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bf4fd669-3e26-4c4b-aaa3-6f62bfd22b51",
+            "c58ef092-00f5-40e8-951c-965194d8f7e1",
+            "3c4a254c-db38-4924-9241-f93913ec6c74"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5215,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
